@@ -25,7 +25,9 @@ class GLaDOSChecker:
 
     @staticmethod
     def _current_time() -> str:
-        return (datetime.datetime.utcnow() + datetime.timedelta(hours=8)).strftime("%Y-%m-%d %H:%M")
+        return datetime.datetime.now(datetime.timezone.utc).astimezone(
+    datetime.timezone(datetime.timedelta(hours=8))
+).strftime("%Y-%m-%d %H:%M")
 
     def _gen_headers(self) -> dict:
         return {
